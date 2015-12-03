@@ -33,12 +33,12 @@ public class RiotAPI {
 			
 		}
 	
-	public Summoner createSummoner(int summonerid) throws Exception{
+	public Summoner createSummoner(String summonername) throws Exception{
 		//Parameters to pass
 		String League,Tier,Division; 
 		int Leaguepoints; 
 		
-		
+		int summonerid = getSummonerid(summonername);
 		String url = "https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/";
 		url = url+summonerid+"/entry?api_key="+APIkey; 
 		URL obj= new URL(url);
@@ -69,7 +69,7 @@ public class RiotAPI {
 		int Leaguepoints_index2 = thingtoParse.indexOf(",",Leaguepoints_index1);
 		Leaguepoints = Integer.parseInt(thingtoParse.substring(Leaguepoints_index1+14,Leaguepoints_index2));
 		
-		Summoner toReturn = new Summoner(League,Tier,Division,Leaguepoints);
+		Summoner toReturn = new Summoner(APIkey,League,Tier,Division,Leaguepoints,summonerid);
 		return toReturn; 
 	}
 	
@@ -84,7 +84,4 @@ public class RiotAPI {
 
 		return response.toString(); 
 	}
-	
-	
-	
 }
