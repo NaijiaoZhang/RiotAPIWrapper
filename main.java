@@ -17,8 +17,11 @@ public class main {
 			int[] matches = Kumori_Yuki.getMatches(); 
 			String[] summonersingame= testing.getSummoners(matches[0]);
 			for(int i=0;i<10;i++){
-				System.out.println("\nSummoner in most recent game: "+summonersingame[i]);
+				System.out.println("Summoner in most recent ranked game: "+summonersingame[i]);
 			}
+			
+			//Getting MMR Test
+			
 		}
 		catch(Exception e){
 			
