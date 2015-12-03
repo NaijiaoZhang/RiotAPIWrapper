@@ -5,14 +5,15 @@ import java.net.URL;
 
 public class Summoner {
 	private String APIkey; 
-	private String League,Tier,Division;
+	private String Summonername,League,Tier,Division;
 	private int Leaguepoints, Summonerid; 
 	private int[] matchAnalysis = new int[10];
 	
 	
 	
-	public Summoner(String key, String L, String T,String D, int LP, int S){
+	public Summoner(String key, String N,String L, String T,String D, int LP, int S){
 		APIkey = key; 
+		Summonername = N;
 		League = L; 
 		Tier = T; 
 		Division = D; 
@@ -40,12 +41,12 @@ public class Summoner {
 			int index2 = thingtoParse.indexOf(",",index1);
 			index = index2; 
 			matchAnalysis[i]=Integer.parseInt(thingtoParse.substring(index1+9, index2));
-			System.out.println("Match "+i+": "+matchAnalysis[i]);
 		}
 		
 		
 	}
 
+	//Getting information from HTTPURLconnection and getting the String 
 	private String httpResult(HttpURLConnection connection) throws Exception{
 		BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 		String inputLine;
@@ -59,6 +60,10 @@ public class Summoner {
 	}
 	
 	//*******************************************GRABBING VALUES****************************************
+	
+	public String getSummonername(){
+		return Summonername; 
+	}
 	
 	public String getLeague(){
 		return League; 
